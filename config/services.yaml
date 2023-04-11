@@ -28,6 +28,10 @@ services:
             $processor: '@api_platform.doctrine.orm.state.persist_processor'
             $passwordHasher: '@security.password_hasher'
 
+    App\State\PublicationUserSetter:
+        $processor: '@api_platform.doctrine.orm.state.persist_processor'
+        $storage: '@security.token_storage'
+
     jwt_created_listener:
         # Classe prenant en charge l'événement
         class: App\EventListener\JWTCreatedListener
