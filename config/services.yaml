@@ -27,3 +27,10 @@ services:
         bind:
             $processor: '@api_platform.doctrine.orm.state.persist_processor'
             $passwordHasher: '@security.password_hasher'
+
+    jwt_created_listener:
+        # Classe prenant en charge l'événement
+        class: App\EventListener\JWTCreatedListener
+        # Précision de l'evenement à capter
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }

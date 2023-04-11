@@ -9,3 +9,8 @@ run :
 - php bin/console doctrine:migrations:migrate
 
 warning ! it will erase everything on the table
+
+then run :
+-  php bin/console lexik:jwt:generate-keypair
+
+to generate encrypted keys
