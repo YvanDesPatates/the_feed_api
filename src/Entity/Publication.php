@@ -37,6 +37,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 class Publication
 {
+    #[Groups(['publication:read'])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
