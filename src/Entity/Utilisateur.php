@@ -21,8 +21,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
-#[ApiResource(operations: [new GetCollection(), new Get(), new Delete(),
-    new Post(denormalizationContext: ["groups" => ["utilisateur:create"]], security: "is_granted('ROLE_USER') and object == user", validationContext: ["utilisateur:create", "Default"], processor: UserPasswordHasher::class),
+#[ApiResource(operations: [new GetCollection(), new Get(),
+    new Delete(security: "is_granted('ROLE_USER') and object == user"),
+    new Post(denormalizationContext: ["groups" => ["utilisateur:create"]], validationContext: ["utilisateur:create", "Default"], processor: UserPasswordHasher::class),
     new Patch(denormalizationContext: ["groups" => ["utilisateur:update"]], security: "is_granted('ROLE_USER') and object == user", validationContext: ["utilisateur:update", "Default"], processor: UserPasswordHasher::class)],
     normalizationContext: ["groups" => ["utilisateur:read"]],
     order: ["login" => "DESC"])]
