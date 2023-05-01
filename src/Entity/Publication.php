@@ -30,7 +30,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     order: ["datePublication" => "DESC"]
 )]
 #[ApiResource(operations: [new GetCollection(), new Get(),
-    new Delete(security: "is_granted('ROLE_USER') ans object.Auteur == user"),
+    new Delete(security: "is_granted('ROLE_USER') and object.Auteur == user"),
     new Post(security: "is_granted('ROLE_USER')", processor: PublicationUserSetter::class)],
     normalizationContext: ["groups" => ["publication:read", "utilisateur:read"]],
     order: ["datePublication" => "DESC"]
